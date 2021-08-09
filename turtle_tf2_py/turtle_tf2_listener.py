@@ -32,8 +32,13 @@ class FrameListener(Node):
     def __init__(self):
         super().__init__('turtle_tf2_frame_listener')
 
+        # Declare and acquire `target_frame` parameter
+        self.declare_parameter('target_frame', 'turtle1')
+        self.target_frame = self.get_parameter(
+            'target_frame').get_parameter_value().string_value
+
         self._tf_buffer = Buffer()
-        self._tf_listener = TransformListener(self._tf_buffer, self, spin_thread=False)
+        self._tf_listener = TransformListener(self._tf_buffer, self)
 
         # Create a client to spawn a turtle
         self.client = self.create_client(Spawn, 'spawn')
@@ -43,6 +48,7 @@ class FrameListener(Node):
             self.get_logger().info('service not available, waiting again...')
 
         # Initialize request with turtle name and coordinates
+        # Note that x, y and theta are defined as floats in turtlesim/srv/Spawn
         request = Spawn.Request()
         request.name = 'turtle2'
         request.x = float(4)
@@ -58,24 +64,34 @@ class FrameListener(Node):
         self._output_timer = self.create_timer(1.0, self.on_timer)
 
     def on_timer(self):
-        from_frame_rel = 'turtle1'
+        # Store frame names in variables that will be used to
+        # compute transformations
+        from_frame_rel = self.target_frame
         to_frame_rel = 'turtle2'
 
-        # Look up for the transformation between turtle1 and turtle2 frames
-        # and send velocity commands for turtle2 to reach turtle1
+        # Look up for the transformation between target_frame and turtle2 frames
+        # and send velocity commands for turtle2 to reach target_frame
         try:
-            when = rclpy.time.Time()
+            now = rclpy.time.Time()
             trans = self._tf_buffer.lookup_transform(
-                to_frame_rel, from_frame_rel, when, timeout=Duration(seconds=1.0))
-
-            msg = Twist()
-            msg.angular.z = 1.0 * math.atan2(
-                trans.transform.translation.y, trans.transform.translation.x)
-            msg.linear.x = 0.5 * math.sqrt(
-                trans.transform.translation.x ** 2 + trans.transform.translation.y ** 2)
-            self.turtle_vel_.publish(msg)
+                to_frame_rel,
+                from_frame_rel,
+                now,
+                timeout=Duration(seconds=1.0))
         except LookupException:
             self.get_logger().info('transform not ready')
+            return
+
+        msg = Twist()
+        msg.angular.z = 1.0 * math.atan2(
+            trans.transform.translation.y,
+            trans.transform.translation.x)
+
+        msg.linear.x = 0.5 * math.sqrt(
+            trans.transform.translation.x ** 2 +
+            trans.transform.translation.y ** 2)
+
+        self.turtle_vel_.publish(msg)
 
 
 def main():
