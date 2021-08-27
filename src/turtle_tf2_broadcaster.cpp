@@ -1,4 +1,4 @@
-// Copyright 2016 Open Source Robotics Foundation, Inc.
+// Copyright 2021 Open Source Robotics Foundation, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -50,9 +50,9 @@ public:
   }
 
 private:
-  void handle_turtle_pose(const std::shared_ptr<turtlesim::msg::Pose> msg) const
+  void handle_turtle_pose(const std::shared_ptr<turtlesim::msg::Pose> msg)
   {
-    rclcpp::Time now;
+    rclcpp::Time now = this->get_clock()->now();
     geometry_msgs::msg::TransformStamped t;
 
     // Read message content and assign it to
