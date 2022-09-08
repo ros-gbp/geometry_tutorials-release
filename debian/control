@@ -1,0 +1,13 @@
+Source: ros-galactic-turtle-tf2-cpp
+Section: misc
+Priority: optional
+Maintainer: Alejandro Hernández Cordero <alejandro@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-galactic-ament-cmake, ros-galactic-ament-lint-auto <!nocheck>, ros-galactic-ament-lint-common <!nocheck>, ros-galactic-geometry-msgs, ros-galactic-launch, ros-galactic-launch-ros, ros-galactic-message-filters, ros-galactic-rclcpp, ros-galactic-tf2, ros-galactic-tf2-geometry-msgs, ros-galactic-tf2-ros, ros-galactic-turtlesim, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-turtle-tf2-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-galactic-geometry-msgs, ros-galactic-launch, ros-galactic-launch-ros, ros-galactic-message-filters, ros-galactic-rclcpp, ros-galactic-tf2, ros-galactic-tf2-geometry-msgs, ros-galactic-tf2-ros, ros-galactic-turtlesim, ros-galactic-ros-workspace
+Description: turtle_tf2_cpp demonstrates how to write a ROS2 C++ tf2 broadcaster and listener with the turtlesim.
+ The turtle_tf2_listener commands turtle2 to follow turtle1 around as you drive turtle1 using the keyboard.
