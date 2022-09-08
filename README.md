@@ -1,3 +1,29 @@
+## geometry_tutorials (galactic) - 0.3.5-1
+
+The packages in the `geometry_tutorials` repository were released into the `galactic` distro by running `/usr/bin/bloom-release --track galactic --rosdistro galactic geometry_tutorials` on `Thu, 08 Sep 2022 12:59:56 -0000`
+
+These packages were released:
+- `geometry_tutorials`
+- `turtle_tf2_cpp`
+- `turtle_tf2_py`
+
+Version of package(s) in repository `geometry_tutorials`:
+
+- upstream repository: https://github.com/ros/geometry_tutorials
+- release repository: https://github.com/ros-gbp/geometry_tutorials-release.git
+- rosdistro version: `0.3.4-1`
+- old version: `0.3.4-1`
+- new version: `0.3.5-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.2`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.22.1`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
 ## geometry_tutorials (foxy) - 0.3.5-1
 
 The packages in the `geometry_tutorials` repository were released into the `foxy` distro by running `/usr/bin/bloom-release --track foxy --rosdistro foxy geometry_tutorials` on `Thu, 08 Sep 2022 12:57:29 -0000`
