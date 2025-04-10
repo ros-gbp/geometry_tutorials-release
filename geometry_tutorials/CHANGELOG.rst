@@ -2,21 +2,24 @@
 Changelog for package geometry_tutorials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.3.5 (2022-09-08)
+0.2.4 (2025-04-10)
 ------------------
 
-0.3.4 (2021-10-11)
+0.2.3 (2020-04-02)
+------------------
+* Bump CMake version to avoid CMP0048 warning (`#29 <https://github.com/ros/geometry_tutorials//issues/29>`_)
+* Contributors: Alejandro Hernández Cordero
+
+0.2.2 (2015-03-03)
 ------------------
 
-0.3.3 (2021-08-27)
+0.2.1 (2014-12-17)
 ------------------
+* Added new tutorial for tf2
+* Contributors: Denis Štogl
 
-0.3.2 (2021-08-09)
+0.2.0 (2013-06-28)
 ------------------
-
-0.3.1 (2021-06-23)
-------------------
-
-* Add Audrow as a maintainer and move Shyngys to author (`#37 <https://github.com/ros/geometry_tutorials/issues/37>`_)
-* Migrate turtle_tf2 tutorial package to ROS2 (`#34 <https://github.com/ros/geometry_tutorials/issues/34>`_)
-* Contributors: kurshakuz, Audrow Nash
+* Cleaned up build system and package.xml
+* geometry_tutorials) Catkinized. Added metapackage.
+* Contributors: Isaac Saito, William Woodall
