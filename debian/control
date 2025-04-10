@@ -1,0 +1,12 @@
+Source: ros-noetic-geometry-tutorials
+Section: misc
+Priority: optional
+Maintainer: William Woodall <william@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin
+Homepage: http://www.ros.org/wiki/geometry_tutorials
+Standards-Version: 3.9.2
+
+Package: ros-noetic-geometry-tutorials
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-turtle-tf, ros-noetic-turtle-tf2
+Description: Metapackage of geometry tutorials ROS.
